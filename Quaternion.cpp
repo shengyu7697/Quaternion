@@ -28,6 +28,15 @@ void EulerToQuaternion(float pitch, float yaw, float roll, float *quat)
     quat[3] = cp2 * cy2 * sr2 - sp2 * sy2 * cr2; // z
 }
 
+void QuaternionToEuler(float *q, float &pitch, float &yaw, float &roll)
+{
+    // Reference: https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Math/quaternion.cpp
+    // Assuming the angles are in radians.
+    pitch = asin(2.0f * (q[0] * q[1] - q[2] * q[3]));
+    yaw = atan2(2.0f * (q[0] * q[2] + q[3] * q[1]), 1.0f - 2.0f * (q[1] * q[1] + q[2] * q[2]));
+    roll = atan2(2.0f * (q[0] * q[3] + q[1] * q[2]), 1.0f - 2.0f * (q[3] * q[3] + q[1] * q[1]));
+}
+
 float DegreesToRadians(float degrees)
 {
     return degrees * M_PI / 180;
