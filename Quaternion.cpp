@@ -11,7 +11,7 @@ using namespace std;
 // pitch     yaw      roll
 // attitude  heading  bank
 // x         y        z
-void EulerToQuaternion(float *quat, float pitch, float yaw, float roll)
+void EulerToQuaternion(float pitch, float yaw, float roll, float *quat)
 {
     // Reference: https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Math/quaternion.cpp
     // Assuming the angles are in radians.
@@ -42,7 +42,7 @@ void test(float x, float y, float z)
 {
     float quat[4] = {0};
 
-    EulerToQuaternion(quat, DegreesToRadians(x), DegreesToRadians(y), DegreesToRadians(z));
+    EulerToQuaternion(DegreesToRadians(x), DegreesToRadians(y), DegreesToRadians(z), quat);
     printf("%12f %12f %12f %12f\n", quat[0], quat[1], quat[2], quat[3]); // w x y z
 }
 
