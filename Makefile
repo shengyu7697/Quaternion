@@ -1,7 +1,7 @@
 TARGET = a.out
 
 CXX = g++
-CXXFLAGS = -g -O0 -Wall -W -std=c++11
+CXXFLAGS = -g -O0 -Wall -W -std=c++11 -I./
 LDFLAGS = -pthread
 RM = rm -rf
 SRCS = $(wildcard *.cpp)
