@@ -1,7 +1,5 @@
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <stdlib.h>
+#include "Quaternion.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -11,7 +9,7 @@ using namespace std;
 // pitch     yaw      roll
 // attitude  heading  bank
 // x         y        z
-void EulerToQuaternion(float pitch, float yaw, float roll, float *quat)
+void Euler2Quaternion(float pitch, float yaw, float roll, float *quat)
 {
     // Reference: https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Math/quaternion.cpp
     // Assuming the angles are in radians.
@@ -28,7 +26,7 @@ void EulerToQuaternion(float pitch, float yaw, float roll, float *quat)
     quat[3] = cp2 * cy2 * sr2 - sp2 * sy2 * cr2; // z
 }
 
-void QuaternionToEuler(float *q, float &pitch, float &yaw, float &roll)
+void Quaternion2Euler(float *q, float &pitch, float &yaw, float &roll)
 {
     // Reference: https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Math/quaternion.cpp
     // Assuming the angles are in radians.
@@ -37,12 +35,12 @@ void QuaternionToEuler(float *q, float &pitch, float &yaw, float &roll)
     roll = atan2(2.0f * (q[0] * q[3] + q[1] * q[2]), 1.0f - 2.0f * (q[3] * q[3] + q[1] * q[1]));
 }
 
-float DegreesToRadians(float degrees)
+float Degrees2Radians(float degrees)
 {
     return degrees * M_PI / 180;
 }
 
-float RadiansToDegrees(float radians)
+float Radians2Degrees(float radians)
 {
     return radians * 180 / M_PI;
 }

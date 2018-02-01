@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdio.h>
-#include "Quaternion.hpp"
+#include "Quaternion.h"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ void test(float x, float y, float z)
 {
     float quat[4] = {0};
 
-    EulerToQuaternion(DegreesToRadians(x), DegreesToRadians(y), DegreesToRadians(z), quat);
+    Euler2Quaternion(Degrees2Radians(x), Degrees2Radians(y), Degrees2Radians(z), quat);
     printf("%12f %12f %12f %12f\n", quat[0], quat[1], quat[2], quat[3]); // w x y z
 }
 
