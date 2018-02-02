@@ -1,4 +1,4 @@
-project(Quaternion)
+project(libQuaternion)
 cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_BUILD_TYPE Debug)
@@ -11,4 +11,4 @@ else()
 endif()
 
 file(GLOB SRCS ./*.h ./*.cpp)
-add_executable(${PROJECT_NAME} ${SRCS})
+add_executable(quaternion ${SRCS})

@@ -1,4 +1,4 @@
-TARGET = a.out
+TARGET = quaternion
 
 CXX = g++
 CXXFLAGS = -g -O0 -Wall -W -std=c++11 -I./
